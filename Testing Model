@@ -37,6 +37,8 @@ knn_aug <- augment(knn_final_fit, new_data=season21) %>%
 
 
 
+
+
 model_results <- tibble(Model =c("Elastic Model",
             "Random Forest Model",
             "Linear Model",
@@ -46,3 +48,36 @@ tibble_results <- model_results %>%
   dplyr::arrange(RMSE)
 
 tibble_results
+
+
+
+
+
+
+
+
+
+
+rf_auge <- augment(rf_final_fit, new_data=season22) %>%
+  rmse(truth = PTS, estimate = .pred)
+
+lm_auge <- augment(lm_final_fit, new_data=season22) %>%
+  rmse(truth = PTS, estimate = .pred)
+
+knn_auge <- augment(knn_final_fit, new_data=season22) %>%
+  rmse(truth = PTS, estimate = .pred)
+
+elastic_auge <- augment(elastic_final_fit, new_data=season22) %>%
+  rmse(truth = PTS, estimate = .pred)
+
+
+model_results <- tibble(Model =c("Elastic Model",
+            "Random Forest Model",
+            "Linear Model",
+            "KNN Model"), RMSE = c(elastic_auge$.estimate, rf_auge$.estimate, lm_auge$.estimate, knn_auge$.estimate))
+
+tibble_results2 <- model_results %>% 
+  dplyr::arrange(RMSE)
+
+tibble_results2
+
