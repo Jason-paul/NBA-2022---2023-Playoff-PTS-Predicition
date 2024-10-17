@@ -1,0 +1,7 @@
+final_compare_tibble <- tibble(Model = c("Linear Regression", "Elastic Regression", "K Nearest Neighbors",  "Random Forest"), RMSE = c(lm_rmse$mean, elastic_rmse$mean, knn_rmse$mean, rf_rmse$mean))
+
+# Arranging by lowest RMSE
+final_compare_tibble <- final_compare_tibble %>% 
+  arrange(RMSE)
+
+final_compare_tibble
