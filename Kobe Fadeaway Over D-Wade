@@ -1,0 +1,72 @@
+What is the NBA
+The NBA stands for National Basketball Association and is a collection of the best 450 basketball players in the world. The players play 82 standard regular season games with an in season tournament for financial compensation. Then after the end of the regular season the top 6 seeds of the west and east division are guaranteed a playoff spot while seed 7-10 go through a play-in tournament. This consists of a game to get 7th and 8th seeding for the East and West division. After the playoff seeding has been decided there are 1st round, 2nd round, semifinals, and finals series where the champion of that season is crowned.
+
+What are the variables in the datset and what do they mean?
+There are 30 variables present in the dataset in total. I will give a detailed explanation of each variable below:
+
+*Rk stands for Rank and is a designated number for a player.
+
+*Player stands for the Player Name.
+
+*Pos sands for Position and refers to the 5 positions in basketball C for Center, PG for Point Guard, SG for Shooting Guard, SF for Small Forward, and PF for Power Forward.
+
+*Age stands for players age.
+
+*Tm stands for team which is the team the player currently plays for.
+
+*G stands for games played which is total amount of games played in the season.
+
+*GS stands for games started which is the amount of games started that season.
+
+*MP stands for Minutes played per game.
+
+*FG stands for Field goals per game which is the total number of shots made per game.
+
+*FGA stands for Field goal attempts per game which is the total number of shots attempted per game.
+
+*FG% stands for Field goal percentage which is which is the total percent of shots made per game that season.
+
+*3P stands for 3-point field goals per game.
+
+*3PA stands for 3-point field goal attempts per game.
+
+*3P% stands for 3-point field goal percentage.
+
+*2P stands for 2-point field goals per game.
+
+*2PA stands for 2-point field goal attempts per game.
+
+*2P% stands for 2-point field goal percentage.
+
+*eFG% stands for Effective field goal percentage.
+
+*FT stands for Free throws per game.
+
+*FTA stands for Free throw attempts per game.
+
+*FT% stands for Free throw percentage.
+
+*ORB stands for Offensive rebounds per game.
+
+*DRB stands for Defensive rebounds per game.
+
+*TRB stands for Total rebounds per game.
+
+*AST stands for Assists per game.
+
+*STL stands for Steals per game.
+
+*BLK stands for Blocks per game.
+
+*TOV stands for Turnovers per game.
+
+*PF stands for Personal fouls per game.
+
+*PTS stands for Points per game for the season.
+
+For future reference we will be excluding Rk, Player, FG, FGA, 3P, 3PA, 2P, 2PA, FTA, FT, TRB, and Tm in our recipe calculation but we shall keep it in the dataset so that the table is more presentable and easier to decipher.
+
+Why are we interested in this model?
+This model can be utilized for a number of reasons. One reason why we want to create a model to predict stats for the following season is because it sets realistic expectations for what a players expected improvement will be for that season. It will be especially helpful for giving an idea for how much better new players will be in the league and see if older player will maintain the same level of production or produce less. Another reason for why we want to a model to predict stats is it helps us see how a team will preform with its compilation of players in the following season. This will help teams predict team play and overall stats helping them make trades or other moves to help secure a championship or make moves to win one in the future.
+
+knitr::include_graphics("/Users/jasonpaul/Desktop/PSTAT 131 DATA/Kobe.jpeg")
