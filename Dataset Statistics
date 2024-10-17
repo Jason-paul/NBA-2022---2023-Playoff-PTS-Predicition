@@ -1,0 +1,4 @@
+dim(season21)
+dim(season22)
+colSums(is.na(season21))
+colSums(is.na(season22))
