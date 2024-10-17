@@ -1,0 +1,17 @@
+lm_fit <- fit_resamples(lm_workflow, resamples = season21_folds) 
+
+lm_rmse <- collect_metrics(lm_fit) %>% filter(.metric == "rmse") %>% arrange(mean) %>% slice(1)
+
+elastic_rmse <- collect_metrics(elastic_tune) %>% filter(.metric == "rmse") %>% arrange(mean) %>% slice(1)
+
+rf_rmse <- collect_metrics(rf_tune) %>% filter(.metric == "rmse") %>% arrange(mean) %>% slice(1)
+
+knn_rmse <- (collect_metrics(knn_tune) %>% filter(.metric == "rmse")) %>% arrange(mean) %>% slice(1)
+
+lm_rmse
+
+elastic_rmse
+
+rf_rmse
+
+knn_rmse
