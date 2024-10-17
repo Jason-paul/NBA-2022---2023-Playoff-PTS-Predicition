@@ -31,3 +31,18 @@ knn_final_fit <- fit(knn_final, data = season21)
 
 knn_aug <- augment(knn_final_fit, new_data=season21) %>%
   rmse(truth = PTS, estimate = .pred)
+
+
+
+
+
+
+model_results <- tibble(Model =c("Elastic Model",
+            "Random Forest Model",
+            "Linear Model",
+            "KNN Model"), RMSE = c(elastic_aug$.estimate, rf_aug$.estimate, lm_aug$.estimate, knn_aug$.estimate))
+
+tibble_results <- model_results %>% 
+  dplyr::arrange(RMSE)
+
+tibble_results
