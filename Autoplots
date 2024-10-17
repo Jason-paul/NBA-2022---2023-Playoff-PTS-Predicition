@@ -1,0 +1,6 @@
+autoplot(elastic_tune, metric = 'rmse')
+
+autoplot(knn_tune, metric = 'rmse')
+
+autoplot(rf_tune, metric = 'rmse')
+
