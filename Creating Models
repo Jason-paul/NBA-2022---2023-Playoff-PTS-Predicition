@@ -1,0 +1,47 @@
+Creating the models:
+
+First model that was set up was the Linear Regression model. I did not tune on any variables for this.
+
+The second model that was set up was the Random Forest model. I tuned on the mtry, trees, and min_n variables.
+
+The third model that was set up was the Elastic Regression model. I tuned on the penalty and mixture.
+
+The fourth model that was set up was the KNN Regression model. I tuned on neighbors.
+
+
+
+set.seed(848)
+
+#Linear Model 
+
+lm_model <- linear_reg() %>% 
+  set_engine("lm")
+
+_________________________________________________________________________________________________________________________
+
+#Elastic  Model 
+
+elastic_net <- linear_reg(mixture = tune(), 
+                         penalty = tune()) %>% 
+  set_mode("regression") %>% 
+  set_engine("glmnet")
+
+_________________________________________________________________________________________________________________________
+
+#Random Forest Model
+
+rf <- rand_forest(mtry = tune(), 
+                       trees = tune(), 
+                       min_n = tune()) %>% 
+  set_engine("ranger", importance = "impurity") %>% 
+  set_mode("regression")
+
+_________________________________________________________________________________________________________________________
+
+#KNN Model
+
+knn <- nearest_neighbor(neighbors = tune()) %>% 
+  set_mode("regression") %>% 
+  set_engine("kknn")
+
+_________________________________________________________________________________________________________________________
