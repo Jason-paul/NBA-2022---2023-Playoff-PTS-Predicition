@@ -1,0 +1,14 @@
+#Recipe
+PTS_recipe <- recipe(PTS ~ Pos + Age + G + GS + MP + `FG%` + `3P%`  + `2P%` + `eFG%` + `FT%` + ORB + DRB + AST + STL + BLK  + TOV + PF,
+         data = season21) %>%  
+  step_dummy(Pos) %>%
+  step_center(all_predictors()) %>%   
+  step_scale(all_predictors()) %>% 
+  step_nzv(all_predictors())
+
+prep(PTS_recipe) %>% bake(season21)
+
+
+
+#Cross-folding 
+season21_folds <- vfold_cv(season21, v = 10, strata = PTS)
