@@ -1,0 +1,8 @@
+#Elastic grid
+penalty <- grid_regular(penalty(range = c(-5,1)), mixture(range =c(0,1)),levels = 10)
+
+#KNN grid
+knn <- grid_regular(neighbors(range = c(1,25)), levels = 10)
+
+#Random Forest grid`
+rf_grid <- grid_regular(mtry(range = c(1, 16)), trees(range = c(50,400)), min_n(range = c(5,20)), levels = 6)
