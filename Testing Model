@@ -1,0 +1,33 @@
+set.seed(848)
+#ELastic test
+elastic_final <- finalize_workflow(elastic_workflow, elastic_rmse)
+
+elastic_final_fit <- fit(elastic_final, data = season21)
+
+elastic_aug <- augment(elastic_final_fit, new_data=season21) %>%
+  rmse(truth = PTS, estimate = .pred)
+
+#Random Forest test
+rf_final <- finalize_workflow(rf_workflow, rf_rmse)
+
+rf_final_fit <- fit(rf_final, data = season21)
+
+rf_aug <- augment(rf_final_fit, new_data=season21) %>%
+  rmse(truth = PTS, estimate = .pred)
+
+#Linear Model fit
+lm_final <- finalize_workflow(lm_workflow, lm_rmse)
+
+lm_final_fit <- fit(lm_final, data = season21)
+
+lm_aug <- augment(lm_final_fit, new_data=season21) %>%
+  rmse(truth = PTS, estimate = .pred)
+
+#KNN Model fit
+
+knn_final <- finalize_workflow(knn_workflow, knn_rmse)
+
+knn_final_fit <- fit(knn_final, data = season21)
+
+knn_aug <- augment(knn_final_fit, new_data=season21) %>%
+  rmse(truth = PTS, estimate = .pred)
