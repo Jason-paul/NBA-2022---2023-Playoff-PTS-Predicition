@@ -1,0 +1,7 @@
+The goal of this project is to predict NBA playoff PTS statistics for the 2022-2023 seasons using data from the 2021-2022 NBA season. 
+I will be using data from the NBA website with over 30 variables in consideration. We will conclude with comparing our model results with the actual results made during the 2022-2023 season. 
+I obtained this dataset via Kaggle, this is the link to the datasets https://www.kaggle.com/datasets/vivovinco/20222023-nba-player-stats-regular.
+
+https://www.kaggle.com/datasets/vivovinco/nba-player-stats
+
+knitr::include_graphics("/Users/jasonpaul/Desktop/PSTAT 131 DATA/NBA Logo.png")
