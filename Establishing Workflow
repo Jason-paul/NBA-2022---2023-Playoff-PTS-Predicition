@@ -1,0 +1,19 @@
+#Linear Model Workflow 
+lm_workflow <- workflow() %>% 
+  add_model(lm_model) %>% 
+  add_recipe(PTS_recipe)
+
+#Elastic Model Workflow 
+elastic_workflow <- workflow() %>% 
+  add_recipe(PTS_recipe) %>% 
+  add_model(elastic_net)
+
+#Random Forest Workflow 
+rf_workflow <- workflow() %>% 
+  add_recipe(PTS_recipe) %>% 
+  add_model(rf)
+
+#KNN Model Workflow 
+knn_workflow <- workflow() %>% 
+  add_model(knn) %>% 
+  add_recipe(PTS_recipe)
