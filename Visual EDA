@@ -1,0 +1,125 @@
+#Playoff PPG by an individual level
+
+ggplot(season21, aes(PTS)) +
+  geom_bar(fill='red3') +
+  labs(
+    title = "PPG in Playoffs"
+  ) +
+  scale_fill_manual(values = c("0-5" = "red3", "6-11" = "blue3", "12-17" = "green3",
+                               "18-23" = "orange3", "24-29" = "yellow3",
+                               "30-35" = "purple3", "36-41" = "pink3")) +
+  theme_minimal()
+
+____________________________________________________________________________________________________________________________________________________________________
+
+#Frequency of Points by Ranges
+
+season21 <- season21 %>%
+  mutate(Range = cut(PTS, breaks = c(0, 5, 11, 17, 23, 29, 35, 41), include.lowest = TRUE,
+                     labels = c("0-5", "6-11", "12-17", "18-23", "24-29", "30-35", "36-41")))
+
+range_counts <- season21 %>%
+  group_by(Range) %>%
+  summarise(Frequency = n())
+
+ggplot(range_counts, aes(x = Range, y = Frequency, fill = Range)) +
+  geom_bar(stat = "identity") +
+  labs(
+    title = "Frequency of Points in Ranges",
+    x = "PTS Range",
+    y = "Frequency"
+  ) +
+  scale_fill_manual(values = c("0-5" = "red3", "6-11" = "blue3", "12-17" = "green3",
+                               "18-23" = "orange3", "24-29" = "yellow3",
+                               "30-35" = "purple3", "36-41" = "pink3")) +
+  theme_minimal() 
+
+_____________________________________________________________________________________________________________________________________________________________________
+
+#Points by position grouped by ranges
+
+season21 <- season21 %>%
+  mutate(Range = cut(PTS, breaks = c(0, 5, 11, 17, 23, 29, 35, 41), include.lowest = TRUE,
+                     labels = c("0-5", "6-11", "12-17", "18-23", "24-29", "30-35", "36-41")))
+
+# Group by 'Position' and 'Range' and count the frequency of points in each range for each position
+position_range_counts <- season21 %>%
+  group_by(Pos, Range) %>%
+  summarise(Frequency = n())
+
+_____________________________________________________________________________________________________________________________________________________________________
+
+#Bar plot showing the frequency of points in each range for each position
+
+ggplot(position_range_counts, aes(x = Pos, y = Frequency, fill = Range)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(
+    title = "Frequency of Points by Position",
+    x = "Basketball Positions",
+    y = "Frequency"
+  ) +
+  scale_fill_manual(values = c("0-5" = "red3", "6-11" = "blue3", "12-17" = "green3",
+                               "18-23" = "orange3", "24-29" = "yellow3",
+                               "30-35" = "purple3", "36-41" = "pink3")) +
+  theme_minimal() 
+______________________________________________________________________________________________________________________________________________________________________
+
+#Bar plot showing turnovers by position
+
+position_turnovers <- season21 %>%
+  group_by(Pos) %>%
+  summarise(Total_Turnovers = sum(TOV, na.rm = TRUE))
+
+# Create a bar plot showing turnovers by position
+ggplot(position_turnovers, aes(x = Pos, y = Total_Turnovers)) +
+  geom_bar(stat = "identity", fill = "skyblue") +
+  labs(
+    title = "Total Turnovers by Basketball Position",
+    x = "Basketball Positions",
+    y = "Total Turnovers"
+  ) +
+  theme_minimal() 
+
+_______________________________________________________________________________________________________________________________________________________________________
+
+#Minutes played vs the points per game they score
+
+breaks_mp <- c(0, 10, 20, 30, 40, 50)  # Define breaks for MP
+breaks_pts <- c(0, 5, 10, 15, 20, 25, 30, 35, 40, 45)  # Define breaks for PTS
+
+
+season21 <- season21 %>%
+  mutate(
+    MP_Range = cut(MP, breaks = breaks_mp, labels = c('0-10', '11-20', '21-30', '31-40', '41-50'), include.lowest = TRUE),
+    PTS_Range = cut(PTS, breaks = breaks_pts, labels = c('0-5', '6-10', '11-15', '16-20', '21-25', '26-30', '31-35', '36-40', '41-45'), include.lowest = TRUE)
+  )
+
+frequency_data <- season21 %>%
+  group_by(MP_Range, PTS_Range) %>%
+  summarise(Frequency = n())
+
+_______________________________________________________________________________________________________________________________________________________________________
+
+#Frequency of MP vs PTS
+
+ggplot(frequency_data, aes(x = MP_Range, y = PTS_Range, fill = Frequency)) +
+  geom_tile() +
+  labs(
+    title = "Frequency of MP vs PTS",
+    x = "Group Minutes per Game Range",
+    y = "Points per Game Range",
+    fill = "Frequency"
+  ) +
+  scale_fill_gradient(low = "lightblue", high = "darkblue", guide = "colorbar") +
+  theme_minimal()
+
+_______________________________________________________________________________________________________________________________________________________________________
+
+#Correlation Plot 
+
+season21 %>%
+  select(where(is.numeric)) %>%
+  cor() %>%
+  corrplot()
+
+_______________________________________________________________________________________________________________________________________________________________________
