@@ -1,4 +1,4 @@
-#Playoff PPG by an individual level
+#Playoff PPG by an individual levels
 
 ggplot(season21, aes(PTS)) +
   geom_bar(fill='red3') +
