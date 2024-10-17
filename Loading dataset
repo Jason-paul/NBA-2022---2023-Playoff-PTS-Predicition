@@ -1,0 +1,3 @@
+set.seed(848)
+
+season21 <- read_delim("/Users/jasonpaul/Desktop/PSTAT 131 DATA/2021-2022 NBA Player Stats - Playoffs.csv", delim = ";")
