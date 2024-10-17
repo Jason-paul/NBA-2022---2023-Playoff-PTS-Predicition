@@ -1,0 +1,20 @@
+#Elastic Model
+elastic_tune <- tune_grid(
+  elastic_workflow,
+  resamples = season21_folds,
+  grid = penalty
+)
+
+#KNN
+knn_tune <- tune_grid(
+    knn_workflow,
+    resamples = season21_folds,
+    grid = knn
+)
+
+#Random Forest
+rf_tune <- tune_grid(
+  rf_workflow,
+  resamples = season21_folds,
+  grid = rf_grid
+)
